@@ -1,0 +1,18 @@
+<body>
+  $maybe p <- user
+     <div .subtitle>Welcome #{p}
+     <ul>
+        <li> 
+             <a href=@{PersonAdminR AdminListR}> Persons 
+             (Action 
+                     <a href=@{AddPersonR}>Add
+             ) 
+        <li> 
+             <a href=@{GroupAdminR AdminListR}> Groups
+             (Action
+                <a href=@{AddGroupR}>Add
+             )
+  $nothing
+     <div .subtitle>Welcome Anonymous
+     <div .content>
+        Please <a href=@{AuthR LoginR}>Login</a>

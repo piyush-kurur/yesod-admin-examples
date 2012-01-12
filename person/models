@@ -1,0 +1,14 @@
+Person
+    userName Text Eq Asc
+    name     Text Update Eq Asc
+    uid      Int  Eq Update
+    group    GroupId
+    shell    Text Update
+    hash  Text Maybe  Update
+    salt  Text Maybe  Update
+    UniqueUserName userName
+
+Group
+    name Text Eq Update Asc
+    gid  Int  Eq Update
+    UniqueGid gid

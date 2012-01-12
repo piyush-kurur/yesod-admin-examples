@@ -1,0 +1,41 @@
+Name:              person
+Version:           0.0.0
+License:           BSD3
+
+Author:            Piyush P Kurur
+Maintainer:        Piyush P Kurur
+Synopsis:          A site for managing unix users. 
+
+Description: This is a simple unix user management application that is
+  written to test and analyse the yesod-admin package.
+
+Category:          Web
+Stability:         Experimental
+Cabal-version:     >= 1.8
+Build-type:        Simple
+
+Flag cmdline
+     Description: Build some helper command line executables
+     Default: False
+
+Library
+    Exposed-modules: Application
+    Other-modules: Settings
+                 , Site
+                 , Persist
+                 , Handlers
+                 , Handlers.RootR
+                 , Handlers.AddPersonR
+                 , Handlers.AddGroupR
+    Build-depends: base         >= 4       && < 5
+                 , yesod        >= 0.9     && < 0.10
+                 , yesod-auth
+                 , yesod-admin
+                 , yesod-form
+                 , text
+                 , time
+                 , persistent
+                 , persistent-template
+                 , persistent-sqlite >= 0.6 && < 0.7
+                 , template-haskell
+                 , hamlet               >= 0.10     && < 0.11

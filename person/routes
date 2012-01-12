@@ -1,0 +1,6 @@
+/	 RootR	  GET
+/auth	 AuthR	  Auth getAuth
+/add/group	  AddGroupR GET POST
+/add/person	  AddPersonR GET POST
+/admin/person     PersonAdminR  PersonAdmin  getPersonAdmin
+/admin/group      GroupAdminR GroupAdmin getGroupAdmin
