@@ -1,6 +1,7 @@
 Name:              person
 Version:           0.0.0
 License:           BSD3
+License-file:      LICENSE
 
 Author:            Piyush P Kurur
 Maintainer:        Piyush P Kurur
