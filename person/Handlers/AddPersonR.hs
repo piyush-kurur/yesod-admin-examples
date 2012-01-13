@@ -61,5 +61,5 @@ postAddPersonR = do groups <- getGroupList
                     case res of
                        FormSuccess (u,p) -> do user <- setPassword p u
                                                runDB $ insert user
-                                               defaultLayout [whamlet|Added user|]
+                                               defaultLayout $(whamletFile "templates/done.hamlet")
                        _ -> renderWidget widget enc True

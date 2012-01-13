@@ -29,5 +29,5 @@ renderWidget widget encoding isError =
 postAddGroupR = do ((res,widget),enc) <- runFormPost groupForm
                    case res of
                         FormSuccess group -> do runDB $ insert group
-                                                defaultLayout [whamlet|Added group.|]
+                                                defaultLayout $(whamletFile "templates/done.hamlet")
                         _ -> renderWidget widget enc True
