@@ -1,5 +1,7 @@
 {-# LANGUAGE QuasiQuotes        #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE TemplateHaskell    #-}
+
 module Handlers.AddPersonR
        ( getAddPersonR
        , postAddPersonR
@@ -15,8 +17,6 @@ import Control.Applicative
 
 getAddPersonR  :: GHandler Site Site RepHtml
 postAddPersonR :: GHandler Site Site RepHtml
-
-
 
 validatePassword (x,y) | x == y = Left "Password do not match"
                        | otherwise = Right x
@@ -50,17 +50,11 @@ getGroupList =  runDB $ fmap (map groupEntry) $ selectList [] []
 getAddPersonR = do groups <- getGroupList
                    ((_,widget),enc) <- generateFormPost $ personForm groups
                    renderWidget widget enc False
-                  
-renderWidget widget enc isError = 
-             defaultLayout [whamlet|
-                <h1> Add Person
-                $if isError 
-                    Bad input
-                <form method=post action=@{AddPersonR} enctype=#{enc}>
-                      ^{widget}
-                      <input type=submit>
-               |]
 
+renderWidget widget encoding isError =
+             let postRoute = AddPersonR
+                 entity    = "Person" :: Text
+             in defaultLayout $(whamletFile "templates/form.hamlet")
 
 postAddPersonR = do groups <- getGroupList
                     ((res,widget),enc) <- runFormPost $ personForm groups
