@@ -1,4 +1,5 @@
 <body>
+  <h1> Site to test yesod-admin package
   $maybe p <- user
      <div .subtitle>Welcome #{p}
      <ul>
@@ -15,4 +16,11 @@
   $nothing
      <div .subtitle>Welcome Anonymous
      <div .content>
-        Please <a href=@{AuthR LoginR}>Login</a>
+        <ul>
+           <li> If you have an account please <a href=@{AuthR LoginR}>Login.</a> 
+           <li> If this is the first time you are using then
+                   <ul>
+                      <li> <a href=@{AddGroupR}>Create a group first
+                      <li> <a href=@{AddPersonR}> Create a person
+                        and then
+                      <li> <a href=@{AuthR LoginR}>Login
